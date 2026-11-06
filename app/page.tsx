@@ -4,23 +4,23 @@ import { useEffect, useState } from 'react'
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Menu, Search, X } from 'lucide-react'
 
 const images = {
-  hero: '/mock-jewellery-hero.png',
+  hero: '/mock-woman-portrait.png',
   secondary: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Homepage-2-GGZ2VH1nOtsOnJyyHvBAhroBi1yAve.avif',
   collection: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Homepage-5-9RS39ai2TWR2Vh2vZkobsx2INURVda.avif',
   detail: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Homepage-4-v2rZqOPhxKbAxtRpX8Y3e5iGiSqJxa.avif',
   story: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Homepage-3-9BmYaIw7WAHcTBdZ4PmGeH3maari50.avif',
-  portrait: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Homepage-8-UowM90jYKfp86Xscqegtag9jF3SmBX.avif',
-  texture: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Homepage-9-4sPuyUSyAx1rCMwq4iD3yOogwmwoWV.avif',
+  portrait: '/mock-woman-garden.png',
+  texture: '/mock-woman-movement.png',
   final: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Homepage-7-rog3kiKTA5s9iZPKfo7d4bxLDwzwsL.avif',
 }
 
 const editSlides = [
-  { image: images.hero, title: 'Wear the unfamiliar.', detail: 'A study in sculptural light and unexpected colour.' },
+  { image: images.hero, title: 'A study in presence.', detail: 'Quiet confidence, caught in warm light.' },
   { image: images.secondary, title: 'The Meher necklace.', detail: 'Emerald, pearls, diamonds, onyx in 14kt gold.' },
   { image: images.collection, title: 'Polki, reframed.', detail: 'Uncut diamonds with a contemporary pulse.' },
   { image: images.detail, title: 'Objects with a point of view.', detail: 'Pieces made to be remembered.' },
   { image: images.story, title: 'The ritual of making.', detail: 'Every surface, considered.' },
-  { image: images.portrait, title: 'For the collectors.', detail: 'Jewellery with a life beyond the moment.' },
+  { image: images.portrait, title: 'For the collectors.', detail: 'A world built around feeling.' },
   { image: images.texture, title: 'A little friction.', detail: 'Where restraint meets expression.' },
   { image: images.final, title: 'Begin with a question.', detail: 'Discover the world of Carpe Diam.' },
 ]
@@ -65,7 +65,7 @@ export default function Page() {
       </div>
 
       <section className="hero" id="top">
-        <img src={images.hero} alt="A sculptural jewel in warm light" />
+        <img src={images.hero} alt="Elegant woman in warm editorial light" />
         <div className="hero-shade" />
         <div className="hero-copy"><span className="eyebrow">Objects with a point of view</span><h1>Wear the<br /><em>unfamiliar.</em></h1><a className="circle-link" href="#collection">Discover <ArrowDown size={15} strokeWidth={1} /></a></div>
         <span className="hero-index">01 / 08</span>
