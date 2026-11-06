@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Menu, Search, X } from 'lucide-react'
 
 const images = {
-  hero: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Homepage-1-rrbh3coseyuDDqpr2SIf1R9Y9YaJ0Bq.avif',
+  hero: '/mock-jewellery-hero.png',
   secondary: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Homepage-2-GGZ2VH1nOtsOnJyyHvBAhroBi1yAve.avif',
   collection: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Homepage-5-9RS39ai2TWR2Vh2vZkobsx2INURVda.avif',
   detail: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Homepage-4-v2rZqOPhxKbAxtRpX8Y3e5iGiSqJxa.avif',
