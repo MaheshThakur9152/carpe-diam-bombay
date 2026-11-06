@@ -34,14 +34,14 @@ export default function Page() {
   return (
     <main className="site-shell">
       <div className={`loading-screen ${loading ? '' : 'loading-screen--done'}`} aria-hidden={!loading}>
-        <div className="loader-mark">C</div>
+        <img className="loader-logo" src="/carpediam-logo-original.svg" alt="Carpe Diam" />
         <div className="loader-line"><span /></div>
         <span className="loader-label">Carpe Diem</span>
       </div>
 
       <header className="site-header">
-        <button className="icon-button" aria-label="Open menu" onClick={() => setMenuOpen(true)}><Menu size={19} strokeWidth={1.25} /></button>
-        <a className="wordmark" href="#top">CARPEDIAM</a>
+        <button className="icon-button" aria-label="Open menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}><Menu size={19} strokeWidth={1.25} /></button>
+        <a className="wordmark" href="#top"><img src="/carpediam-logo-original.svg" alt="Carpe Diam" /></a>
         <div className="header-actions"><button className="icon-button" aria-label="Search"><Search size={17} strokeWidth={1.25} /></button><a className="header-link" href="#contact">Inquire <ArrowUpRight size={13} strokeWidth={1.2} /></a></div>
       </header>
 
@@ -59,7 +59,7 @@ export default function Page() {
         <span className="hero-index">01 / 08</span>
       </section>
 
-      <section className="intro section-pad"><Reveal><span className="eyebrow">A new language of luxury</span><h2>For those who<br /><em>look closer.</em></h2></Reveal><Reveal className="intro-body"><p>Carpediam is a study in contrast — ancient instinct and modern form, restraint and expression. Every piece begins with a question, and ends with something you will keep.</p><a className="text-link" href="#story">Read our story <ArrowUpRight size={14} /></a></Reveal></section>
+      <section className="intro section-pad"><Reveal><span className="eyebrow">A new language of luxury</span><h2>For those who<br /><em>look closer.</em></h2></Reveal><Reveal className="intro-body"><p>Carpediam is a study in contrast — ancient instinct and modern form, restraint and expression. Every piece begins with a question, and ends with something you will keep.</p><a className="text-link" href="#story">Read our story <ArrowUpRight size={14} /></a></Reveal><div className="scroll-word" aria-hidden="true">CARPE DIAM</div></section>
 
       <section className="split-feature"><div className="split-image"><img src={images.secondary} alt="Editorial portrait from the Carpediam collection" /></div><div className="split-copy"><Reveal><span className="eyebrow">The first collection</span><h2>Not made<br /><em>to blend in.</em></h2><p>Fluid silhouettes, tactile metals, and stones chosen for their imperfections. A collection that follows no rules but your own.</p><a className="text-link" href="#collection">View collection <ArrowUpRight size={14} /></a></Reveal></div></section>
 
@@ -71,7 +71,7 @@ export default function Page() {
 
       <section className="closing" id="contact"><img src={images.final} alt="Final Carpediam campaign image" /><div className="closing-overlay" /><Reveal className="closing-copy"><span className="eyebrow">Begin a conversation</span><h2>Make it<br /><em>personal.</em></h2><a className="circle-link" href="mailto:hello@carpediam.com">Get in touch <ArrowUpRight size={15} strokeWidth={1} /></a></Reveal></section>
 
-      <footer className="footer section-pad"><a className="wordmark" href="#top">CARPEDIAM</a><div className="footer-links"><a href="#collection">Instagram</a><a href="#edit">The Edit</a><a href="mailto:hello@carpediam.com">hello@carpediam.com</a></div><span className="footer-note">© 2026 Carpediam / Made with intention</span></footer>
+      <footer className="footer section-pad"><a className="wordmark" href="#top"><img src="/carpediam-logo-original.svg" alt="Carpe Diam" /></a><div className="footer-links"><a href="#collection">Instagram</a><a href="#edit">The Edit</a><a href="mailto:hello@carpediam.com">hello@carpediam.com</a></div><span className="footer-note">© 2026 Carpediam / Made with intention</span></footer>
     </main>
   )
 }
