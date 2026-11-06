@@ -60,7 +60,7 @@ export default function Page() {
       <div className={`menu-drawer ${menuOpen ? 'menu-drawer--open' : ''}`}>
         <button className="drawer-close" aria-label="Close menu" onClick={() => setMenuOpen(false)}><X size={22} strokeWidth={1.2} /></button>
         <span className="eyebrow">Explore</span>
-        <nav><a href="#collection" onClick={() => setMenuOpen(false)}>Collections</a><a href="#edit" onClick={() => setMenuOpen(false)}>The Edit</a><a href="#story" onClick={() => setMenuOpen(false)}>Our story</a><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></nav>
+        <nav><a href="/collections" onClick={() => setMenuOpen(false)}>Collections</a><a href="#edit" onClick={() => setMenuOpen(false)}>The Edit</a><a href="#story" onClick={() => setMenuOpen(false)}>Our story</a><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></nav>
         <p>Objects with a point of view.<br />Made for a life well lived.</p>
       </div>
 
