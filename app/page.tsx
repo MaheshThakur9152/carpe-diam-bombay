@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArrowDown, ArrowUpRight, Menu, Search, X } from 'lucide-react'
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Menu, Search, X } from 'lucide-react'
 
 const images = {
   hero: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Homepage-1-rrbh3coseyuDDqpr2SIf1R9Y9YaJ0Bq.avif',
@@ -14,6 +14,17 @@ const images = {
   final: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Homepage-7-rog3kiKTA5s9iZPKfo7d4bxLDwzwsL.avif',
 }
 
+const editSlides = [
+  { image: images.hero, title: 'Wear the unfamiliar.', detail: 'A study in sculptural light and unexpected colour.' },
+  { image: images.secondary, title: 'The Meher necklace.', detail: 'Emerald, pearls, diamonds, onyx in 14kt gold.' },
+  { image: images.collection, title: 'Polki, reframed.', detail: 'Uncut diamonds with a contemporary pulse.' },
+  { image: images.detail, title: 'Objects with a point of view.', detail: 'Pieces made to be remembered.' },
+  { image: images.story, title: 'The ritual of making.', detail: 'Every surface, considered.' },
+  { image: images.portrait, title: 'For the collectors.', detail: 'Jewellery with a life beyond the moment.' },
+  { image: images.texture, title: 'A little friction.', detail: 'Where restraint meets expression.' },
+  { image: images.final, title: 'Begin with a question.', detail: 'Discover the world of Carpe Diam.' },
+]
+
 function Reveal({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return <div className={`reveal ${className}`}>{children}</div>
 }
@@ -21,11 +32,12 @@ function Reveal({ children, className = '' }: { children: React.ReactNode; class
 export default function Page() {
   const [loading, setLoading] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [activeSlide, setActiveSlide] = useState(0)
 
   useEffect(() => {
     const timer = window.setTimeout(() => setLoading(false), 1500)
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('is-visible'))
+      entries.forEach((entry) => entry.target.classList.toggle('is-visible', entry.isIntersecting))
     }, { threshold: 0.14 })
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
     return () => { window.clearTimeout(timer); observer.disconnect() }
@@ -65,13 +77,24 @@ export default function Page() {
 
       <section className="collection" id="collection"><div className="collection-head section-pad"><Reveal><span className="eyebrow">Selected works</span><h2>Uncommon<br /><em>ground.</em></h2></Reveal><span className="collection-count">02 — 05</span></div><div className="collection-grid"><Reveal><img src={images.collection} alt="Gold sculptural jewellery detail" /><span>01 / Orbit ring</span></Reveal><Reveal><img src={images.detail} alt="Close-up of a sculptural necklace" /><span>02 / Tidal necklace</span></Reveal><Reveal><img src={images.story} alt="Artful editorial jewellery composition" /><span>03 / Relic earrings</span></Reveal></div></section>
 
-      <section className="edit-banner" id="edit"><img src={images.portrait} alt="The Edit editorial portrait" /><div className="edit-overlay" /><Reveal className="edit-copy"><span className="eyebrow">The edit / 001</span><h2>Quiet<br /><em>provocation.</em></h2><a className="circle-link" href="#contact">Enter the edit <ArrowUpRight size={15} strokeWidth={1} /></a></Reveal></section>
+      <section className="edit-experience" id="edit">
+        <div className="edit-stage">
+          {editSlides.map((slide, index) => <img key={slide.title} className={`edit-slide-image ${index === activeSlide ? 'is-active' : ''}`} src={slide.image} alt={slide.title} />)}
+          <div className="edit-stage-shade" />
+          <div className="edit-topline"><span className="eyebrow">The Edit</span><span className="edit-kicker">Objects with a point of view</span></div>
+          <button className="edit-arrow edit-arrow--left" aria-label="Previous edit slide" onClick={() => setActiveSlide((activeSlide + editSlides.length - 1) % editSlides.length)}><ArrowLeft size={19} strokeWidth={1} /></button>
+          <button className="edit-arrow edit-arrow--right" aria-label="Next edit slide" onClick={() => setActiveSlide((activeSlide + 1) % editSlides.length)}><ArrowRight size={19} strokeWidth={1} /></button>
+          <Reveal className="edit-hero-copy"><span className="eyebrow">Objects with a point of view</span><h2>{editSlides[activeSlide].title}</h2><p>{editSlides[activeSlide].detail}</p><a className="circle-link" href="#story">Discover <ArrowDown size={15} strokeWidth={1} /></a></Reveal>
+          <span className="edit-counter">{String(activeSlide + 1).padStart(2, '0')} / 08</span>
+        </div>
+        <div className="edit-introduction section-pad"><Reveal><span className="eyebrow">A closer look</span><h2>The world<br /><em>behind the pieces.</em></h2></Reveal><Reveal className="edit-introduction-copy"><p>A closer look at the world of Carpe Diam. Its inspirations, latest creations and the people and processes behind the pieces.</p><a className="text-link" href="#story">Read the journal <ArrowUpRight size={14} /></a></Reveal></div>
+      </section>
 
       <section className="story section-pad" id="story"><Reveal><span className="eyebrow">The Carpediam ethos</span><h2>Beauty is<br /><em>in the tension.</em></h2></Reveal><Reveal className="story-image"><img src={images.texture} alt="Textured material and jewellery composition" /></Reveal><Reveal className="story-copy"><p>We believe the most compelling objects carry a little friction. A sharp edge. A strange proportion. Something that makes you pause, then lean in.</p><a className="text-link" href="#contact">Discover more <ArrowUpRight size={14} /></a></Reveal></section>
 
       <section className="closing" id="contact"><img src={images.final} alt="Final Carpediam campaign image" /><div className="closing-overlay" /><Reveal className="closing-copy"><span className="eyebrow">Begin a conversation</span><h2>Make it<br /><em>personal.</em></h2><a className="circle-link" href="mailto:hello@carpediam.com">Get in touch <ArrowUpRight size={15} strokeWidth={1} /></a></Reveal></section>
 
-      <footer className="footer section-pad"><a className="wordmark" href="#top"><img src="/carpediam-logo-original.svg" alt="Carpe Diam" /></a><div className="footer-links"><a href="#collection">Instagram</a><a href="#edit">The Edit</a><a href="mailto:hello@carpediam.com">hello@carpediam.com</a></div><span className="footer-note">© 2026 Carpediam / Made with intention</span></footer>
+      <footer className="footer section-pad"><a className="wordmark" href="#top"><img src="/carpediam-logo-original.svg" alt="Carpe Diam" /></a><div className="footer-links"><a href="#collection">Instagram</a><a href="#edit">The Edit / 08 stories</a><a href="mailto:hello@carpediam.com">hello@carpediam.com</a></div><span className="footer-note">© 2026 Carpediam / Made with intention</span></footer>
     </main>
   )
 }
